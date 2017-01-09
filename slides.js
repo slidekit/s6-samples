@@ -1,28 +1,48 @@
 
 var BASE_URL_PREFIX = '../s6/';
 
+
+function debug( msg )
+{
+  if( console && console.log )
+  {
+      console.log( "[debug:slides.js]" + msg );
+  }
+}
+
+
 function addScript( name )
 {
-  var el = document.createElement( 'script' );
-  el.type = 'text/javascript';
-  el.src = BASE_URL_PREFIX + name;
+  // note:
+  //  Scripts that are dynamically created and added to the document
+  //    are **async** by default
 
-  if(!document.head)  // fix for Firefox <4.0
-    document.head = document.getElementsByTagName('head')[0];
+  debug( "addScript " + name );
+
+  var el = document.createElement( 'script' );
+  el.type  = 'text/javascript';
+  el.src   = BASE_URL_PREFIX + name;
+  el.async = false;              // note: new attrib added in HTML5
+
+  //  note: no longer care about old firefox - why? why not?
+  // if(!document.head)  // fix for Firefox <4.0
+  //  document.head = document.getElementsByTagName('head')[0];
 
   document.head.appendChild( el );
 }
 
 function addStyle( name, media )
 {
+  debug( "addStyle " + name + ", " + media );
+
   var el = document.createElement( 'link' );
   el.rel = 'stylesheet';
   el.type = 'text/css';
   el.href = BASE_URL_PREFIX + name;
   el.media = media;
 
-  if(!document.head)  // fix for Firefox <4.0
-    document.head = document.getElementsByTagName('head')[0];
+  // if(!document.head)  // fix for Firefox <4.0
+  //  document.head = document.getElementsByTagName('head')[0];
 
   document.head.appendChild( el );
 }
@@ -30,6 +50,8 @@ function addStyle( name, media )
 
 function letsGo()
 {
+  debug( "letsGo" );
+
   /*********
    * add style sheet links
    */
@@ -60,5 +82,7 @@ function letsGo()
   // Slideshow.init();
 }
 
-// letsGo();
-document.addEventListener('DOMContentLoaded', letsGo, false);
+
+letsGo();
+// use document ready why? why not?
+// document.addEventListener('DOMContentLoaded', letsGo, false);
