@@ -1,4 +1,5 @@
-var BASE_URL_PREFIX = './';
+
+var BASE_URL_PREFIX = '../s6/';
 
 function addScript( name )
 {
@@ -26,50 +27,22 @@ function addStyle( name, media )
   document.head.appendChild( el );
 }
 
-function addStyleLess( name, media )
-{
-  var el = document.createElement( 'link' );
-  el.rel   = 'stylesheet/less';
-  el.type = 'text/css';
-  el.href  = BASE_URL_PREFIX + name;
-  el.media = media;
-
-  if(!document.head)  // fix for Firefox <4.0
-    document.head = document.getElementsByTagName('head')[0];
-
-  document.head.appendChild( el );
-}
-
 
 function letsGo()
 {
-  var useLess = true;
-
   /*********
    * add style sheet links
    */
 
-  if( useLess )
-  {
-    addStyleLess( 'themes/blank5/projection.css.less', 'screen,projection' );
-    addStyleLess( 'themes/blank5/screen.css.less',     'screen'            );
-    addStyleLess( 'themes/blank5/print.css.less',      'print'             );
-  }
-  else
-  {
-    addStyle( 'themes/blank5/o/projection.css', 'screen,projection' );
-    addStyle( 'themes/blank5/o/screen.css',     'screen'            );
-    addStyle( 'themes/blank5/o/print.css',      'print'             );
-  }
-  
+  // addStyle( 'themes/blank5/o/projection.css', 'screen,projection' );
+  // addStyle( 'themes/blank5/o/screen.css',     'screen'            );
+  // addStyle( 'themes/blank5/o/print.css',      'print'             );
+
   /********
-   * add js libs (less, jquery)
+   * add js libs (jquery, etc.)
    */
 
-  if( useLess )
-    addScript( 'js/less-1.1.4.min.js' );
-
-  addScript( 'js/jquery-1.7.min.js' );
+  addScript( 'js/jquery-2.1.1.min.js' );
 
   /********
    * add S6 js code
