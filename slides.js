@@ -56,9 +56,9 @@ function letsGo()
    * add style sheet links
    */
 
-  // addStyle( 'themes/blank5/o/projection.css', 'screen,projection' );
-  // addStyle( 'themes/blank5/o/screen.css',     'screen'            );
-  // addStyle( 'themes/blank5/o/print.css',      'print'             );
+  addStyle( 'css/themes/blank5.css', 'screen,projection' );
+  addStyle( 'css/screen.css',        'screen'            );
+  addStyle( 'css/print.css',         'print'             );
 
   /********
    * add js libs (jquery, etc.)
